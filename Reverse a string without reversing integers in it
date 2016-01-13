@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+bool IsNumeric(char ch)
+{
+	if(ch >= '0' && ch <= '9')
+	{
+		return true;
+	}
+	else
+	{
+	return false;
+    }
+}
+
+int main() {
+	
+	bool flag1, flag2;
+    flag1 = flag2 =  false;
+	string input;
+	cin >> input;
+	
+	for(int i = 0, j = input.length() - 1 ; i < j;)
+	{
+		if(IsNumeric(input[i]))
+		{
+			i++;
+			flag1 = true;
+		}
+		
+		if(IsNumeric(input[j]))
+		{
+			j--;
+			flag2 = true;
+		}
+		
+		if(flag1 == false && flag2 == false)
+		{
+			char temp = input[i];
+			input[i] = input[j];
+			input[j] = temp;
+			i++, j--;
+		}
+			flag1 = flag2 =  false;
+	}
+	cout << input;
+	return 0;
+}
